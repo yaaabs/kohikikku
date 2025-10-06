@@ -21,7 +21,7 @@ export function LocationSection() {
         </div>
 
         <div className="mb-8 text-center lg:text-left">
-          <h3 className="mb-2 text-brand text-coffee-dark">CoffeeKicks Café</h3>
+          <h3 className="mb-2 text-brand text-coffee-dark">Coffee Kicks Café</h3>
           <p className="flex items-center justify-center gap-2 text-body text-coffee-medium lg:justify-start">
             <MapPin className="h-5 w-5 text-coffee-accent" />
             JXXR+353, Ziti Center Mall, Grace Park East, Caloocan, Metro Manila

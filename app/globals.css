@@ -176,66 +176,39 @@ html {
   opacity: 0;
 }
 
-/* Testimonial Marquee Animation - Responsive */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Responsive calculations for different screen sizes */
-    transform: translateX(calc(-260px * 5 - 3rem)); /* Mobile size by default */
-  }
-}
-
-@media (min-width: 640px) {
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-320px * 5 - 3rem)); /* Small screens */
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-420px * 5 - 6rem)); /* Medium screens and up */
-    }
-  }
-}
-
+/* Testimonial Marquee Container - Now using JavaScript animation for seamless looping */
 .marquee-container {
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 5%, 
-    black 95%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 5%,
-    black 95%,
-    transparent 100%
-  );
+  /* Gradient masks are now handled in the component for better control */
 }
 
-.animate-scroll {
-  animation: scroll 40s linear infinite;
+/* Enhanced testimonial card responsiveness */
+.testimonial-card {
+  /* Improved text wrapping for mobile */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
-/* Optimized for mobile */
-@media (max-width: 639px) {
-  .animate-scroll {
-    animation: scroll 30s linear infinite; /* Slightly faster on mobile */
+/* Better text handling for different screen sizes */
+@media (max-width: 640px) {
+  .testimonial-card {
+    /* More conservative text wrapping on mobile */
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+  
+  .testimonial-card blockquote {
+    /* Ensure proper line spacing on mobile */
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 641px) {
+  .testimonial-card blockquote {
+    /* Better line spacing for larger screens */
+    line-height: 1.6;
   }
 }
 

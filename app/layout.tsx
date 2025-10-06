@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { Fraunces } from "next/font/google"
 import { Bebas_Neue } from "next/font/google"
@@ -33,6 +33,24 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   title: "CoffeeKicks Café - Fuel Your Day with Flavor and Kick",
   description: "Premium coffee shop serving signature drinks, rice bowls, and fresh pastries",
+  keywords: ["coffee shop", "café", "coffee", "sneakers", "Caloocan", "rice bowls", "frappe", "latte"],
+  authors: [{ name: "CoffeeKicks Café" }],
+  creator: "CoffeeKicks Café",
+  publisher: "CoffeeKicks Café",
+  icons: {
+    icon: [
+      { url: "/ck-logo-circle.png", sizes: "any" },
+      { url: "/ck-logo-circle.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/ck-logo-circle.png",
+    apple: "/ck-logo-circle.png",
+  },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#8B4513",
 }
 
 export default function RootLayout({

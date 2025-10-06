@@ -3,14 +3,9 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, CheckCircle, User } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef } from "react"
 
-const testimonials = [
-	{
-		name: "JB Balete",
-		text: "Budget friendly food and drinks.. With a good view of the Caloocan City People's Park. Best iced coffee",
-		rating: 5,
-		source: "Facebook",
-	},
+const testimonials: Testimonial[] = [
 	{
 		name: "Erica Gene Caparas",
 		text: "Super good ng ambiance! A place to go for me 💕",
@@ -22,6 +17,12 @@ const testimonials = [
 		text: "sisig and clubhouse sandwich are must try!",
 		rating: 5,
 		source: "Google",
+	},
+	{
+		name: "JB Balete",
+		text: "Budget friendly food and drinks.. With a good view of the Caloocan City People's Park. Best iced coffee",
+		rating: 5,
+		source: "Facebook",
 	},
 	{
 		name: "Rey Martin Apostol",
@@ -37,12 +38,217 @@ const testimonials = [
 	},
 ]
 
+// Define testimonial type for better TypeScript support
+type Testimonial = {
+	name: string
+	text: string
+	rating: number
+	source: string
+}
+
+// Testimonial Card Component for reusability
+function TestimonialCard({ testimonial, index }: { testimonial: Testimonial, index: number }) {
+	return (
+		<Card className="testimonial-card min-w-[280px] sm:min-w-[340px] flex-shrink-0 border-white/20 shadow-md hover:shadow-lg transition-shadow duration-300 md:min-w-[400px] lg:min-w-[420px] bg-white/90 backdrop-blur-sm">
+			<CardContent className="p-4 md:p-6 lg:p-8 relative max-w-[280px] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[420px]">
+				<div className="mb-3 md:mb-6 flex items-center justify-between">
+					<div className="flex gap-1">
+						{Array.from({ length: 5 }).map((_, i) => (
+							<Star
+								key={i}
+								className={`h-4 w-4 md:h-5 md:w-5 transition-colors duration-200`}
+								style={{
+									fill: i < testimonial.rating ? "#d4a574" : "#d1d5db",
+									color: i < testimonial.rating ? "#d4a574" : "#d1d5db",
+								}}
+							/>
+						))}
+					</div>
+					<div className="flex items-center gap-1 md:gap-2">
+						{testimonial.source === "Google" ? (
+							<div className="flex items-center">
+								<span className="text-green-500 mr-1">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+										className="md:w-4 md:h-4"
+									>
+										<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+										<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+										<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+										<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+									</svg>
+								</span>
+								<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
+									{testimonial.source}
+								</span>
+							</div>
+						) : testimonial.source === "Facebook" ? (
+							<div className="flex items-center">
+								<span className="text-blue-500 mr-1">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+									>
+										<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+									</svg>
+								</span>
+								<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
+									{testimonial.source}
+								</span>
+							</div>
+						) : (
+							<div className="flex items-center">
+								<span className="text-purple-500 mr-1">
+									<CheckCircle className="h-4 w-4" />
+								</span>
+								<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
+									{testimonial.source}
+								</span>
+							</div>
+						)}
+					</div>
+				</div>
+				<blockquote className="mb-4 md:mb-6 text-coffee-dark text-xs sm:text-sm md:text-small font-light italic leading-relaxed break-words hyphens-auto">
+					<span className="line-clamp-4 sm:line-clamp-5 md:line-clamp-6 lg:line-clamp-none">
+						"{testimonial.text}"
+					</span>
+				</blockquote>
+				<div className="flex items-center gap-2 md:gap-3">
+					<div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
+						<Image
+							src="/placeholder-user.jpg"
+							alt={`${testimonial.name} profile picture`}
+							width={40}
+							height={40}
+							className="object-cover w-full h-full"
+						/>
+					</div>
+					<div className="flex-1 min-w-0">
+						<p className="font-display font-semibold text-coffee-dark text-xs sm:text-sm md:text-sm truncate">
+							{testimonial.name}
+						</p>
+						<p className="text-[10px] sm:text-xs md:text-xs text-coffee-medium">
+							Verified Customer
+						</p>
+					</div>
+				</div>
+			</CardContent>
+		</Card>
+	)
+}
+
+// Seamless Infinite Marquee Component
+function TestimonialMarquee({ testimonials }: { testimonials: Testimonial[] }) {
+	const marqueeRef = useRef<HTMLDivElement>(null)
+	const animationRef = useRef<number | null>(null)
+
+	useEffect(() => {
+		const marqueeElement = marqueeRef.current
+		if (!marqueeElement) return
+
+		// Calculate the total width needed for seamless scrolling
+		const firstChild = marqueeElement.children[0] as HTMLElement
+		if (!firstChild) return
+
+		// Get the width of one complete set of testimonials
+		// Calculate gap dynamically based on screen size
+		const gap = window.innerWidth >= 768 ? 24 : 12 // 24px for md+, 12px for mobile
+		const singleSetWidth = testimonials.length * (firstChild.offsetWidth + gap)
+		
+		let currentPosition = 0
+		// Consistent moderate speed across all devices for better user experience
+		const speed = 0.5 // Balanced speed - not too fast, not too slow
+
+		// Animation function for smooth, continuous scrolling
+		const animate = () => {
+			currentPosition += speed
+			
+			// When we've moved one complete set width, reset position seamlessly
+			if (currentPosition >= singleSetWidth) {
+				currentPosition = 0
+			}
+			
+			// Apply the transform
+			marqueeElement.style.transform = `translateX(-${currentPosition}px)`
+			
+			// Continue animation
+			animationRef.current = requestAnimationFrame(animate)
+		}
+
+		// Start the animation
+		animationRef.current = requestAnimationFrame(animate)
+
+		// Pause animation on hover for better UX
+		const handleMouseEnter = () => {
+			if (animationRef.current) {
+				cancelAnimationFrame(animationRef.current)
+			}
+		}
+
+		const handleMouseLeave = () => {
+			animationRef.current = requestAnimationFrame(animate)
+		}
+
+		marqueeElement.addEventListener('mouseenter', handleMouseEnter)
+		marqueeElement.addEventListener('mouseleave', handleMouseLeave)
+
+		// Cleanup
+		return () => {
+			if (animationRef.current) {
+				cancelAnimationFrame(animationRef.current)
+			}
+			marqueeElement.removeEventListener('mouseenter', handleMouseEnter)
+			marqueeElement.removeEventListener('mouseleave', handleMouseLeave)
+		}
+	}, [testimonials])
+
+	// Create multiple sets for seamless looping
+	const testimonialSets = [
+		...testimonials,
+		...testimonials, // Duplicate for seamless transition
+		...testimonials, // Triple for extra smoothness on larger screens
+	]
+
+	return (
+		<div className="marquee-container relative overflow-hidden w-full">
+			{/* Responsive gradient masks for fade effect */}
+			<div className="absolute left-0 top-0 h-full w-8 sm:w-12 md:w-16 lg:w-20 bg-gradient-to-r from-[#F8F1E7] to-transparent z-10 pointer-events-none" />
+			<div className="absolute right-0 top-0 h-full w-8 sm:w-12 md:w-16 lg:w-20 bg-gradient-to-l from-[#F8F1E7] to-transparent z-10 pointer-events-none" />
+			
+			{/* Scrolling testimonials container */}
+			<div
+				ref={marqueeRef}
+				className="flex gap-3 sm:gap-4 md:gap-6"
+				style={{ 
+					width: 'max-content',
+					willChange: 'transform' // Optimize for animations
+				}}
+			>
+				{testimonialSets.map((testimonial, index) => (
+					<TestimonialCard 
+						key={`testimonial-${index}`} 
+						testimonial={testimonial} 
+						index={index} 
+					/>
+				))}
+			</div>
+		</div>
+	)
+}
+
 export function TestimonialsSection() {
 	return (
 		<section
 			id="testimonials"
 			className="py-12 md:py-24 px-4 md:px-8 lg:px-16 overflow-hidden relative"
-			style={{ backgroundColor: "#F8F1E7" }}
+			style={{ backgroundColor: "#FBF8F1" }}
 		>
 			{/* Background decoration */}
 			<div className="absolute inset-0 opacity-5">
@@ -66,215 +272,8 @@ export function TestimonialsSection() {
 					</p>
 				</div>
 
-				{/* Responsive marquee container with smooth animation */}
-				<div className="marquee-container relative overflow-hidden w-full">
-					<div className="marquee-track flex animate-scroll gap-3 md:gap-6">
-						{/* First set of testimonials */}
-						{testimonials.map((testimonial, index) => (
-							<Card
-								key={`testimonial-a-${index}`}
-								className="testimonial-card min-w-[260px] sm:min-w-[320px] flex-shrink-0 border-white/20 shadow-md hover:shadow-lg transition-shadow duration-300 md:min-w-[420px] bg-white/90 backdrop-blur-sm"
-							>
-								<CardContent className="p-4 md:p-6 lg:p-8 relative">
-									<div className="mb-3 md:mb-6 flex items-center justify-between">
-										<div className="flex gap-1">
-											{Array.from({ length: 5 }).map((_, i) => (
-												<Star
-													key={i}
-													className={`h-4 w-4 md:h-5 md:w-5 transition-colors duration-200`}
-													style={{
-														fill:
-															i < testimonial.rating
-																? "#d4a574"
-																: "#d1d5db",
-														color:
-															i < testimonial.rating
-																? "#d4a574"
-																: "#d1d5db",
-													}}
-												/>
-											))}
-										</div>
-										<div className="flex items-center gap-1 md:gap-2">
-											{testimonial.source === "Google" ? (
-												<div className="flex items-center">
-													<span className="text-green-500 mr-1">
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="14"
-															height="14"
-															viewBox="0 0 24 24"
-															fill="currentColor"
-															className="md:w-4 md:h-4"
-														>
-															<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-															<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-															<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
-															<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-														</svg>
-													</span>
-													<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
-														{testimonial.source}
-													</span>
-												</div>
-											) : testimonial.source === "Facebook" ? (
-												<div className="flex items-center">
-													<span className="text-blue-500 mr-1">
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="16"
-															height="16"
-															viewBox="0 0 24 24"
-															fill="currentColor"
-														>
-															<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-														</svg>
-													</span>
-													<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
-														{testimonial.source}
-													</span>
-												</div>
-											) : (
-												<div className="flex items-center">
-													<span className="text-purple-500 mr-1">
-														<CheckCircle className="h-4 w-4" />
-													</span>
-													<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
-														{testimonial.source}
-													</span>
-												</div>
-											)}
-										</div>
-									</div>
-									<blockquote className="mb-4 md:mb-6 text-coffee-dark text-xs md:text-small font-light italic leading-relaxed line-clamp-4 md:line-clamp-none">
-										"{testimonial.text}"
-									</blockquote>
-									<div className="flex items-center gap-2 md:gap-3">
-										<div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
-											<Image
-												src="/placeholder-user.jpg"
-												alt={`${testimonial.name} profile picture`}
-												width={40}
-												height={40}
-												className="object-cover w-full h-full"
-											/>
-										</div>
-										<div>
-											<p className="font-display font-semibold text-coffee-dark text-xs md:text-sm">
-												{testimonial.name}
-											</p>
-											<p className="text-[10px] md:text-xs text-coffee-medium">
-												Verified Customer
-											</p>
-										</div>
-									</div>
-								</CardContent>
-							</Card>
-						))}
-						{/* Duplicate set for seamless looping */}
-						{testimonials.map((testimonial, index) => (
-							<Card
-								key={`testimonial-b-${index}`}
-								className="testimonial-card min-w-[260px] sm:min-w-[320px] flex-shrink-0 border-white/20 shadow-md hover:shadow-lg transition-shadow duration-300 md:min-w-[420px] bg-white/90 backdrop-blur-sm"
-							>
-								<CardContent className="p-4 md:p-6 lg:p-8 relative">
-									<div className="mb-3 md:mb-6 flex items-center justify-between">
-										<div className="flex gap-1">
-											{Array.from({ length: 5 }).map((_, i) => (
-												<Star
-													key={i}
-													className={`h-4 w-4 md:h-5 md:w-5 transition-colors duration-200`}
-													style={{
-														fill:
-															i < testimonial.rating
-																? "#d4a574"
-																: "#d1d5db",
-														color:
-															i < testimonial.rating
-																? "#d4a574"
-																: "#d1d5db",
-													}}
-												/>
-											))}
-										</div>
-										<div className="flex items-center gap-1 md:gap-2">
-											{testimonial.source === "Google" ? (
-												<div className="flex items-center">
-													<span className="text-green-500 mr-1">
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="14"
-															height="14"
-															viewBox="0 0 24 24"
-															fill="currentColor"
-															className="md:w-4 md:h-4"
-														>
-															<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-															<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-															<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
-															<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-														</svg>
-													</span>
-													<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
-														{testimonial.source}
-													</span>
-												</div>
-											) : testimonial.source === "Facebook" ? (
-												<div className="flex items-center">
-													<span className="text-blue-500 mr-1">
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="16"
-															height="16"
-															viewBox="0 0 24 24"
-															fill="currentColor"
-														>
-															<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-														</svg>
-													</span>
-													<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
-														{testimonial.source}
-													</span>
-												</div>
-											) : (
-												<div className="flex items-center">
-													<span className="text-purple-500 mr-1">
-														<CheckCircle className="h-4 w-4" />
-													</span>
-													<span className="text-[10px] md:text-xs font-medium text-coffee-medium uppercase tracking-wide">
-														{testimonial.source}
-													</span>
-												</div>
-											)}
-										</div>
-									</div>
-									<blockquote className="mb-4 md:mb-6 text-coffee-dark text-xs md:text-small font-light italic leading-relaxed line-clamp-4 md:line-clamp-none">
-										"{testimonial.text}"
-									</blockquote>
-									<div className="flex items-center gap-2 md:gap-3">
-										<div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
-											<Image
-												src="/placeholder-user.jpg"
-												alt={`${testimonial.name} profile picture`}
-												width={40}
-												height={40}
-												className="object-cover w-full h-full"
-											/>
-										</div>
-										<div>
-											<p className="font-display font-semibold text-coffee-dark text-xs md:text-sm">
-												{testimonial.name}
-											</p>
-											<p className="text-[10px] md:text-xs text-coffee-medium">
-												Verified Customer
-											</p>
-										</div>
-									</div>
-								</CardContent>
-							</Card>
-						))}
-					</div>
-				</div>
+				{/* Seamless infinite marquee container */}
+				<TestimonialMarquee testimonials={testimonials} />
 
 				{/* Trust indicators - more responsive */}
 				<div className="mt-10 md:mt-16 text-center">
