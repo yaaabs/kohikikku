@@ -19,7 +19,7 @@ export function Navbar({ className }: NavbarProps) {
     { label: 'Home', href: '#home', id: 'home' },
     { label: 'Our Story', href: '#about', id: 'about' },
     { label: 'Menu', href: '#menu', id: 'menu' },
-    { label: 'Specials', href: '#specials', id: 'specials' },
+    { label: 'Signature Drinks', href: '#signature-drinks', id: 'signature-drinks' },
     { label: 'Reviews', href: '#testimonials', id: 'testimonials' },
     { label: 'Visit Us', href: '#location', id: 'location' },
   ]

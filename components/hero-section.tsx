@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button"
-import { ShoppingCart, MenuIcon } from "lucide-react"
+import { Coffee, MapPin } from "lucide-react"
 import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#6B3410]">
+  <section id="home" className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#6B3410] pt-24 md:pt-32 pb-10 md:pb-20">
       {/* Background Image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -37,21 +37,35 @@ export function HeroSection() {
           Experience premium coffee, signature drinks, and delicious comfort food at CoffeeKicks Café
         </p>
 
-        <div className="flex flex-col gap-4 animate-fade-in sm:flex-row [animation-delay:400ms]">
+        <div className="flex flex-col gap-5 animate-fade-in sm:flex-row [animation-delay:400ms]">
           <Button
             size="lg"
-            className="group bg-white text-coffee-dark hover:bg-cream-50 font-display font-semibold text-lg px-12 py-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl rounded-xl"
+            className="group bg-white text-coffee-dark hover:bg-white/90 font-display font-semibold text-lg px-12 py-8 transition-all duration-300 hover:translate-y-[-3px] shadow-lg hover:shadow-2xl rounded-2xl border-0"
+            asChild
           >
-            <ShoppingCart className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
-            Order Online
+            <a href="#menu" className="flex items-center">
+              <Coffee className="mr-3 h-5 w-5 transition-transform duration-500 group-hover:rotate-6" />
+              <span className="relative overflow-hidden">
+                <span className="block">See Menu</span>
+                <span className="h-[2px] w-full bg-coffee-accent absolute bottom-[-2px] left-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </span>
+            </a>
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="group border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#8B4513] text-lg px-10 py-7 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            className="group border-[1.5px] border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 text-lg px-10 py-7 font-medium transition-all duration-300 hover:translate-y-[-3px] shadow-md hover:shadow-xl rounded-2xl"
+            asChild
           >
-            <MenuIcon className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-            See Menu
+            <a href="#location" className="flex items-center">
+              <div className="mr-2 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                <MapPin className="h-5 w-5 text-white" />
+              </div>
+              <span className="relative">
+                <span className="block">Visit Us</span>
+                <span className="h-[2px] w-full bg-white/60 absolute bottom-[-2px] left-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </span>
+            </a>
           </Button>
         </div>
       </div>

@@ -55,15 +55,15 @@ export function LocationSection() {
               <div className="space-y-2 text-[#6d4c41]">
                 <div className="flex justify-between">
                   <span className="font-medium">Monday - Friday</span>
-                  <span>7:00 AM - 7:00 PM</span>
+                  <span>10:00 AM - 10:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">Saturday</span>
-                  <span>8:00 AM - 8:00 PM</span>
+                  <span>10:00 AM - 11:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">Sunday</span>
-                  <span>8:00 AM - 6:00 PM</span>
+                  <span>10:00 AM - 11:00 PM</span>
                 </div>
               </div>
             </div>

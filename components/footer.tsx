@@ -26,6 +26,22 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
+                  href="/"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#about"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Our Story
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="#menu"
                   className="text-white/80 hover:text-white transition-colors"
                 >
@@ -34,26 +50,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#about"
+                  href="#reviews"
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#location"
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  Location
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#specials"
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  Specials
+                  Reviews
                 </Link>
               </li>
             </ul>
