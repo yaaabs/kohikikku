@@ -53,7 +53,7 @@ const menuItems = [
 
 export function MenuSection() {
   return (
-    <section className="py-20 px-6 md:px-12 lg:px-20" style={{backgroundColor: '#FFF8F0'}}>
+    <section id="menu" className="py-20 px-6 md:px-12 lg:px-20" style={{backgroundColor: '#FFF8F0'}}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <h2 className="mb-6 heading-section text-coffee-dark text-balance">

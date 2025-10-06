@@ -40,6 +40,7 @@ const testimonials = [
 export function TestimonialsSection() {
 	return (
 		<section
+			id="testimonials"
 			className="py-12 md:py-24 px-4 md:px-8 lg:px-16 overflow-hidden relative"
 			style={{ backgroundColor: "#F8F1E7" }}
 		>

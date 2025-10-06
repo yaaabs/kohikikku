@@ -35,7 +35,7 @@ const specials = [
 
 export function SpecialsSection() {
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col justify-center py-32 px-8 md:px-16 lg:px-24" style={{background: 'rgba(139, 69, 19, 0.85)'}}>
+    <section id="specials" className="relative overflow-hidden min-h-screen flex flex-col justify-center py-32 px-8 md:px-16 lg:px-24" style={{background: 'rgba(139, 69, 19, 0.85)'}}>
       {/* Coffee background with opacity */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/coffee-bean-pattern.jpg')] bg-cover bg-center opacity-20" />

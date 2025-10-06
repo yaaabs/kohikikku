@@ -78,6 +78,7 @@ module.exports = {
           medium: "var(--coffee-medium)",
           light: "var(--coffee-light)",
           accent: "var(--coffee-accent)",
+          orange: "#BB4D00",
         },
         cream: {
           50: "var(--cream-50)",

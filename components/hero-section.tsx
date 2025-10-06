@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#6B3410]">
+    <section id="home" className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#6B3410]">
       {/* Background Image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image

@@ -9,7 +9,7 @@ export function LocationSection() {
     "https://www.google.com/maps/dir/?api=1&destination=Coffee+Kicks+Cafe,+JXXR%2B353,+Ziti+Center+Mall,+Grace+Park+East,+Caloocan,+Metro+Manila,+Philippines"
 
   return (
-    <section className="py-24 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#FBF8F1' }}>
+    <section id="location" className="py-24 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#FBF8F1' }}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <h2 className="mb-6 heading-section text-coffee-dark text-balance">

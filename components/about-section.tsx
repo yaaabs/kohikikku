@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export function AboutSection() {
   return (
-    <section className="py-20 px-6 md:px-12 lg:px-16" style={{backgroundColor: '#FBF8F1'}}>
+    <section id="about" className="py-20 px-6 md:px-12 lg:px-16" style={{backgroundColor: '#FBF8F1'}}>
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 items-center">
           {/* Text Content */}
