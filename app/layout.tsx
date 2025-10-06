@@ -1,15 +1,32 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Playfair_Display } from "next/font/google"
+import { Inter } from "next/font/google"
+import { Fraunces } from "next/font/google"
+import { Bebas_Neue } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 
-const playfair = Playfair_Display({
+// Modern, highly readable body font
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-inter",
+  display: "swap",
+})
+
+// Elegant display font for headings with coffee shop vibes
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["SOFT", "WONK", "opsz"],
+})
+
+// Bold condensed font for logos and impact text
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas",
   display: "swap",
 })
 
@@ -26,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body 
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}
+        className={`${inter.variable} ${fraunces.variable} ${bebasNeue.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <Suspense fallback={null}>{children}</Suspense>

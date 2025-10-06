@@ -2,18 +2,18 @@ import Image from "next/image"
 
 export function AboutSection() {
   return (
-    <section className="py-24 px-4 md:px-8 lg:px-16">
+    <section className="py-20 px-6 md:px-12 lg:px-16" style={{backgroundColor: '#FBF8F1'}}>
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 items-center">
           {/* Text Content */}
-          <div className="space-y-6">
-            <h2 className="font-serif text-4xl font-bold text-foreground text-balance md:text-5xl lg:text-6xl">
+          <div className="space-y-8">
+            <h2 className="heading-section text-coffee-dark">
               Our Story
             </h2>
-            <div className="mb-6">
-              <p className="text-2xl font-semibold text-primary italic">Coffee for Your Sole</p>
+            <div className="mb-4">
+              <p className="text-brand text-coffee-medium">Coffee for Your Sole</p>
             </div>
-            <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+            <div className="space-y-6 text-body-large text-coffee-medium/90">
               <p>
                 CoffeeKicks Café is where exceptional coffee meets sneaker culture. We're not just a café—we're a
                 lifestyle destination that celebrates the perfect blend of premium coffee and fresh kicks.
@@ -31,7 +31,7 @@ export function AboutSection() {
           </div>
 
           {/* Image */}
-          <div className="relative h-[400px] overflow-hidden rounded-2xl shadow-xl lg:h-[500px]">
+          <div className="relative h-[450px] overflow-hidden rounded-3xl shadow-2xl lg:h-[520px]">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-U9JuaazoUJJJKt7eWOZuPhbgRS6f1z.png"
               alt="CoffeeKicks Cafe interior with sneaker displays"

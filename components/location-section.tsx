@@ -9,21 +9,21 @@ export function LocationSection() {
     "https://www.google.com/maps/dir/?api=1&destination=Coffee+Kicks+Cafe,+JXXR%2B353,+Ziti+Center+Mall,+Grace+Park+East,+Caloocan,+Metro+Manila,+Philippines"
 
   return (
-    <section className="bg-muted py-24 px-4 md:px-8 lg:px-16">
+    <section className="py-24 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#FBF8F1' }}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 font-serif text-4xl font-bold text-foreground text-balance md:text-5xl lg:text-6xl">
+          <h2 className="mb-6 heading-section text-coffee-dark text-balance">
             Visit Us
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed">
+          <p className="mx-auto max-w-2xl text-body-large text-coffee-medium">
             We're here to serve you the perfect cup
           </p>
         </div>
 
         <div className="mb-8 text-center lg:text-left">
-          <h3 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">CoffeeKicks Café</h3>
-          <p className="flex items-center justify-center gap-2 text-lg text-muted-foreground lg:justify-start">
-            <MapPin className="h-5 w-5 text-primary" />
+          <h3 className="mb-2 text-brand text-coffee-dark">CoffeeKicks Café</h3>
+          <p className="flex items-center justify-center gap-2 text-body text-coffee-medium lg:justify-start">
+            <MapPin className="h-5 w-5 text-coffee-accent" />
             JXXR+353, Ziti Center Mall, Grace Park East, Caloocan, Metro Manila
           </p>
         </div>
@@ -45,14 +45,14 @@ export function LocationSection() {
 
           <div className="flex flex-col justify-center space-y-6">
             {/* Hours Card */}
-            <div className="rounded-2xl bg-background p-6 shadow-lg ring-1 ring-black/5">
+            <div className="rounded-2xl p-6 shadow-lg ring-1 ring-black/5" style={{ backgroundColor: 'white' }}>
               <div className="mb-4 flex items-center gap-3">
-                <div className="rounded-full bg-primary/10 p-2">
-                  <Clock className="h-6 w-6 text-primary" />
+                <div className="rounded-full p-2" style={{ backgroundColor: 'rgba(139, 69, 19, 0.1)' }}>
+                  <Clock className="h-6 w-6 text-[#8B4513]" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Opening Hours</h3>
+                <h3 className="heading-card text-coffee-dark">Opening Hours</h3>
               </div>
-              <div className="space-y-2 text-muted-foreground">
+              <div className="space-y-2 text-[#6d4c41]">
                 <div className="flex justify-between">
                   <span className="font-medium">Monday - Friday</span>
                   <span>7:00 AM - 7:00 PM</span>
@@ -85,14 +85,14 @@ export function LocationSection() {
             </Button>
 
             {/* Contact Info */}
-            <div className="rounded-2xl bg-background p-6 shadow-lg ring-1 ring-black/5">
-              <div className="space-y-3 text-sm text-muted-foreground">
+            <div className="rounded-2xl p-6 shadow-lg ring-1 ring-black/5" style={{ backgroundColor: 'white' }}>
+              <div className="space-y-3 text-sm text-[#6d4c41]">
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground">Phone:</span>
+                  <span className="font-semibold text-[#3e2723]">Phone:</span>
                   <span>(02) 1234-5678</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground">Email:</span>
+                  <span className="font-semibold text-[#3e2723]">Email:</span>
                   <span>hello@coffeekicks.ph</span>
                 </div>
               </div>

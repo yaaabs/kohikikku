@@ -1,26 +1,33 @@
 import { Facebook, Instagram, Mail, Phone } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground py-16 px-4 md:px-8 lg:px-16">
+    <footer className="py-16 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#53311C' }}>
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 items-start">
           {/* Brand */}
-          <div className="space-y-4">
-            <h3 className="font-serif text-2xl font-bold">CoffeeKicks Café</h3>
-            <p className="text-primary-foreground/80 leading-relaxed">Coffee for Your Sole</p>
-            <p className="text-primary-foreground/80 leading-relaxed text-sm">Fuel your day with flavor and kick.</p>
+          <div className="flex items-start -mt-24">
+            <Image
+              src="/ck-logo-with-text-no-bg.png"
+              alt="CoffeeKicks Café Logo"
+              width={500}
+              height={200}
+              className="filter brightness-0 invert transition-transform duration-300 hover:scale-105"
+              style={{ width: '100%', height: 'auto', maxWidth: '280px' }}
+              priority
+            />
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">Quick Links</h4>
+            <h4 className="font-display font-semibold text-lg text-white">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#menu"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-white/80 hover:text-white transition-colors"
                 >
                   Menu
                 </Link>
@@ -28,7 +35,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#about"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-white/80 hover:text-white transition-colors"
                 >
                   About Us
                 </Link>
@@ -36,7 +43,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#location"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-white/80 hover:text-white transition-colors"
                 >
                   Location
                 </Link>
@@ -44,7 +51,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#specials"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-white/80 hover:text-white transition-colors"
                 >
                   Specials
                 </Link>
@@ -54,46 +61,46 @@ export function Footer() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">Contact</h4>
+            <h4 className="font-display font-semibold text-lg text-white">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span className="text-primary-foreground/80">(02) 8123-4567</span>
+                <Phone className="h-4 w-4 text-white" />
+                <span className="text-white/80">(02) 8123-4567</span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span className="text-primary-foreground/80">hello@coffeekickscafe.com</span>
+                <Mail className="h-4 w-4 text-white" />
+                <span className="text-white/80">hello@coffeekickscafe.com</span>
               </li>
             </ul>
           </div>
 
           {/* Social */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">Follow Us</h4>
+            <h4 className="font-display font-semibold text-lg text-white">Follow Us</h4>
             <div className="flex gap-4">
               <Link
                 href="https://www.facebook.com/p/CoffeeKicks-Cafe-61560849508015/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-primary-foreground/10 p-3 transition-all hover:bg-primary-foreground/20 hover:scale-110"
+                className="rounded-full bg-white/10 p-3 transition-all hover:bg-white/20 hover:scale-110"
                 aria-label="Facebook"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-5 w-5 text-white" />
               </Link>
               <Link
                 href="https://www.instagram.com/coffeekickscafe/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-primary-foreground/10 p-3 transition-all hover:bg-primary-foreground/20 hover:scale-110"
+                className="rounded-full bg-white/10 p-3 transition-all hover:bg-white/20 hover:scale-110"
                 aria-label="Instagram"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-5 w-5 text-white" />
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/60">
+        <div className="mt-12 border-t border-white/20 pt-8 text-center text-sm text-white/60">
           <p>© {new Date().getFullYear()} CoffeeKicks Café. All rights reserved.</p>
         </div>
       </div>

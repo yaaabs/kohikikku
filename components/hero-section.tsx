@@ -29,20 +29,20 @@ export function HeroSection() {
           />
         </div>
 
-        <h1 className="mb-8 max-w-4xl animate-fade-in font-serif text-5xl font-bold leading-tight text-white text-balance md:text-6xl lg:text-7xl [animation-delay:200ms]">
+        <h1 className="mb-8 max-w-4xl animate-fade-in heading-hero text-white text-balance [animation-delay:200ms] drop-shadow-2xl">
           Fuel your day with flavor and kick
         </h1>
 
-        <p className="mb-10 max-w-2xl animate-fade-in text-xl text-cream-100/90 leading-relaxed [animation-delay:300ms]">
+        <p className="mb-10 max-w-2xl animate-fade-in text-body-large text-white/90 [animation-delay:300ms] drop-shadow-lg font-light">
           Experience premium coffee, signature drinks, and delicious comfort food at CoffeeKicks Café
         </p>
 
         <div className="flex flex-col gap-4 animate-fade-in sm:flex-row [animation-delay:400ms]">
           <Button
             size="lg"
-            className="group bg-white text-[#8B4513] hover:bg-cream-50 text-lg px-10 py-7 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            className="group bg-white text-coffee-dark hover:bg-cream-50 font-display font-semibold text-lg px-12 py-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl rounded-xl"
           >
-            <ShoppingCart className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+            <ShoppingCart className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
             Order Online
           </Button>
           <Button

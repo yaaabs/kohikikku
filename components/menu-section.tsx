@@ -53,13 +53,13 @@ const menuItems = [
 
 export function MenuSection() {
   return (
-    <section className="bg-cream-50 py-32 px-6 md:px-12 lg:px-20">
+    <section className="py-20 px-6 md:px-12 lg:px-20" style={{backgroundColor: '#FFF8F0'}}>
       <div className="mx-auto max-w-7xl">
-        <div className="mb-20 text-center">
-          <h2 className="mb-6 font-serif text-5xl font-bold text-coffee-dark text-balance md:text-6xl lg:text-7xl">
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 heading-section text-coffee-dark text-balance">
             Featured Menu
           </h2>
-          <p className="mx-auto max-w-2xl text-xl text-coffee-medium leading-relaxed">
+          <p className="mx-auto max-w-2xl text-body-large text-coffee-medium leading-relaxed">
             Handcrafted beverages and comfort food made with premium ingredients
           </p>
         </div>

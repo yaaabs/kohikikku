@@ -12,21 +12,23 @@ interface MenuCardProps {
 
 export function MenuCard({ name, description, price, image }: MenuCardProps) {
   return (
-    <Card className="group overflow-hidden border-0 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
-      <div className="relative aspect-square overflow-hidden">
+    <Card className="overflow-hidden border shadow-md hover:shadow-lg transition-all">
+      <div className="relative h-56 w-full">
         <Image
-          src={image || "/placeholder.svg"}
+          src={image}
           alt={name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <CardContent className="p-6">
-        <div className="mb-3 flex items-start justify-between gap-2">
-          <h3 className="font-serif text-2xl font-bold text-coffee-dark leading-tight">{name}</h3>
-          <span className="text-xl font-bold text-coffee-accent whitespace-nowrap">{price}</span>
+      <CardContent className="p-5">
+        <div className="mb-2 flex items-start justify-between gap-2">
+          <h3 className="font-display text-xl font-semibold text-coffee-dark">{name}</h3>
+          {/* Updated price styling to match Seasonal Specials */}
+          <span className="text-xl font-bold whitespace-nowrap" style={{color: '#D4A574'}}>{price}</span>
         </div>
-        <p className="text-base text-coffee-medium leading-relaxed">{description}</p>
+        <p className="text-coffee-medium text-sm">{description}</p>
       </CardContent>
     </Card>
   )

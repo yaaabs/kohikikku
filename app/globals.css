@@ -1,186 +1,157 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Coffee-inspired color palette */
-  --background: oklch(0.98 0.01 85); /* Warm cream */
-  --foreground: oklch(0.25 0.02 60); /* Deep coffee brown */
-  --card: oklch(0.96 0.015 75);
-  --card-foreground: oklch(0.25 0.02 60);
-  --popover: oklch(0.98 0.01 85);
-  --popover-foreground: oklch(0.25 0.02 60);
-  --primary: oklch(0.35 0.06 50); /* Rich coffee brown */
-  --primary-foreground: oklch(0.98 0.01 85);
-  --secondary: oklch(0.55 0.08 140); /* Subtle sage green */
-  --secondary-foreground: oklch(0.98 0.01 85);
-  --muted: oklch(0.92 0.015 75);
-  --muted-foreground: oklch(0.5 0.02 60);
-  --accent: oklch(0.45 0.08 45); /* Warm caramel */
-  --accent-foreground: oklch(0.98 0.01 85);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0.015 75);
-  --input: oklch(0.88 0.015 75);
-  --ring: oklch(0.45 0.08 45);
-  --chart-1: oklch(0.35 0.06 50);
-  --chart-2: oklch(0.55 0.08 140);
-  --chart-3: oklch(0.45 0.08 45);
-  --chart-4: oklch(0.65 0.06 55);
-  --chart-5: oklch(0.75 0.04 80);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.96 0.015 75);
-  --sidebar-foreground: oklch(0.25 0.02 60);
-  --sidebar-primary: oklch(0.35 0.06 50);
-  --sidebar-primary-foreground: oklch(0.98 0.01 85);
-  --sidebar-accent: oklch(0.92 0.015 75);
-  --sidebar-accent-foreground: oklch(0.25 0.02 60);
-  --sidebar-border: oklch(0.88 0.015 75);
-  --sidebar-ring: oklch(0.45 0.08 45);
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
-  --font-serif: "Source Serif 4", "Source Serif 4 Fallback";
-  --shadow-x: 0px;
-  --shadow-y: 1px;
-  --shadow-blur: 2px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.05;
-  --shadow-color: #000000;
+  /* Coffee-inspired color palette - cohesive design system */
+  --background: 35 10% 97%; /* Warm cream */
+  --foreground: 25 25% 12%; /* Rich espresso */
+  --card: 35 15% 95%;
+  --card-foreground: 25 25% 12%;
+  --popover: 35 10% 97%;
+  --popover-foreground: 25 25% 12%;
+  --primary: 25 45% 20%; /* Deep coffee */
+  --primary-foreground: 35 20% 95%;
+  --secondary: 35 25% 75%; /* Warm latte */
+  --secondary-foreground: 25 25% 12%;
+  --muted: 30 12% 88%;
+  --muted-foreground: 25 15% 40%;
+  --accent: 35 55% 50%; /* Rich caramel */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 30 8% 82%;
+  --input: 30 8% 82%;
+  --ring: 35 55% 50%;
+  --chart-1: 25 45% 20%;
+  --chart-2: 35 55% 50%;
+  --chart-3: 35 25% 75%;
+  --chart-4: 30 35% 60%;
+  --chart-5: 40 25% 75%;
+  --radius: 0.875rem;
 
-  /* Added custom coffee color variables */
+  /* Typography System */
+  --font-display: var(--font-fraunces); /* Headings */
+  --font-body: var(--font-inter);      /* Body text */
+  --font-brand: var(--font-bebas);     /* Logo/Impact */
+
+  /* Enhanced coffee color palette */
+  --coffee-espresso: #2c1810;
   --coffee-dark: #3e2723;
   --coffee-medium: #6d4c41;
   --coffee-light: #a1887f;
   --coffee-accent: #d4a574;
-  --cream-50: #fff8f0;
-  --cream-100: #fff3e0;
+  --coffee-cream: #f5f1eb;
+  --coffee-latte: #e8dcc0;
+  
+  /* Background variations */
+  --bg-cream: #fbf8f1;
+  --bg-warm: #f8f1e7;
+  --bg-neutral: #f5f2ed;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.269 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.439 0 0);
-  --shadow-x: 0px;
-  --shadow-y: 1px;
-  --shadow-blur: 2px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.05;
-  --shadow-color: #000000;
+  --background: 0 0% 9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 12%;
+  --secondary: 0 0% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 22%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 16%;
+  --input: 0 0% 16%;
+  --ring: 0 0% 83%;
 }
 
-@theme inline {
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --font-serif: "Source Serif 4", "Source Serif 4 Fallback";
-
-  /* Added custom coffee color utilities for Tailwind */
-  --color-coffee-dark: var(--coffee-dark);
-  --color-coffee-medium: var(--coffee-medium);
-  --color-coffee-light: var(--coffee-light);
-  --color-coffee-accent: var(--coffee-accent);
-  --color-cream-50: var(--cream-50);
-  --color-cream-100: var(--cream-100);
-
-  /* computed shadow variables below - do not modify */
-  --shadow-2xs: var(--shadow-x) var(--shadow-y)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-xs: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-sm: var(--shadow-x) var(--shadow-y) calc(var(--shadow-blur) * 1.5) var(--shadow-spread)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-md: calc(var(--shadow-x) * 2) calc(var(--shadow-y) * 2) calc(var(--shadow-blur) * 3)
-    calc(var(--shadow-spread) - 1px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-lg: calc(var(--shadow-x) * 4) calc(var(--shadow-y) * 4) calc(var(--shadow-blur) * 5)
-    calc(var(--shadow-spread) - 3px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-xl: calc(var(--shadow-x) * 6) calc(var(--shadow-y) * 6) calc(var(--shadow-blur) * 7)
-    calc(var(--shadow-spread) - 5px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
-  --shadow-2xl: calc(var(--shadow-x) * 8) calc(var(--shadow-y) * 8) calc(max(0px, var(--shadow-blur) * 9 - 8px))
-    calc(var(--shadow-spread) - 12px)
-    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 250%), transparent);
-  --shadow: var(--shadow-md);
-  --color-shadow-color: var(--shadow-color);
-  --shadow-opacity: var(--shadow-opacity);
-  --shadow-spread: var(--shadow-spread);
-  --shadow-blur: var(--shadow-blur);
-  --shadow-y: var(--shadow-y);
-  --shadow-x: var(--shadow-x);
-}
+/* This theme block is removed and replaced with Tailwind v3 compatible styles */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Typography System */
+  .font-display {
+    font-family: var(--font-display);
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+  
+  .font-brand {
+    font-family: var(--font-brand);
+    letter-spacing: 0.02em;
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  /* Heading Hierarchy */
+  .heading-hero {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-variation-settings: "SOFT" 0, "WONK" 1;
+  }
+  
+  .heading-section {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+  
+  .heading-card {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .text-brand {
+    font-family: var(--font-brand);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  .text-body-large {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  
+  .text-body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  
+  .text-small {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
   }
 }
 
@@ -203,4 +174,91 @@ html {
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
   opacity: 0;
+}
+
+/* Testimonial Marquee Animation - Responsive */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Responsive calculations for different screen sizes */
+    transform: translateX(calc(-260px * 5 - 3rem)); /* Mobile size by default */
+  }
+}
+
+@media (min-width: 640px) {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-320px * 5 - 3rem)); /* Small screens */
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-420px * 5 - 6rem)); /* Medium screens and up */
+    }
+  }
+}
+
+.marquee-container {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%, 
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+/* Optimized for mobile */
+@media (max-width: 639px) {
+  .animate-scroll {
+    animation: scroll 30s linear infinite; /* Slightly faster on mobile */
+  }
+}
+
+.testimonial-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: transform; /* Optimize for animations */
+}
+
+/* Reduced hover effects for touch devices */
+@media (hover: hover) {
+  .testimonial-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Glassmorphism effect for cards */
+.testimonial-card-glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(248, 241, 231, 0.8);
 }
